@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Produksi TKJ - SMK Ma'arif NU Tirto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #4caf50;
+            --accent-color: #81c784;
+            --light-color: #e8f5e9;
+            --dark-color: #1b5e20;
+            --text-color: #333;
+            --light-text: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger i {
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(27, 94, 32, 0.8)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text);
+            padding-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Profile Section */
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .profile-text {
+            position: relative;
+        }
+
+        .school-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .school-logo h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .profile-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-stats {
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            margin-right: 1rem;
+        }
+
+        .stat-item:last-child {
+            margin-right: 0;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            background-color: var(--primary-color);
+            color: white;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon i {
+            font-size: 3rem;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Map Section (replacing Gallery) */
+        .map-section {
+            background-color: var(--light-color);
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 500px;
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-info {
+            text-align: center;
+            margin-top: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .map-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .map-info p {
+            margin-bottom: 1.5rem;
+        }
+
+        .map-info .btn {
+            margin-top: 1rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background-color: var(--light-color);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .pricing-content {
+            padding: 2rem;
+        }
+
+        .pricing-content ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-content li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-content li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-content li i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-info {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 1rem;
+            margin-top: 5px;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-text);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                margin: 0.8rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-stats {
+                flex-direction: column;
+            }
+
+            .stat-item {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .map-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-network-wired"></i>
+                    <span>UP TKJ SMK Ma'arif NU Tirto</span>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#profile">Profil</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#map">Lokasi</a></li>
+                    <li><a href="#pricing">Harga</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Unit Produksi TKJ</h1>
+            <p>SMK Ma'arif NU Tirto - Menyediakan layanan teknologi komputer dan jaringan berkualitas dengan harga terjangkau</p>
+            <a href="#services" class="btn">Lihat Layanan Kami</a>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="profile">
+        <div class="container">
+            <div class="section-title">
+                <h2>Profil Unit Produksi TKJ</h2>
+                <p>Mengenal lebih dekat Unit Produksi Teknik Komputer dan Jaringan SMK Ma'arif NU Tirto</p>
+            </div>
+            <div class="profile-content">
+                <div class="profile-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Unit Produksi TKJ SMK Ma'arif NU Tirto">
+                </div>
+                <div class="profile-text">
+                    <div class="school-logo">
+                        <h3>SMK Ma'arif NU Tirto</h3>
+                    </div>
+                    <p>Unit Produksi TKJ SMK Ma'arif NU Tirto adalah unit usaha yang bergerak di bidang teknologi komputer dan jaringan. Didirikan sebagai sarana praktikum siswa sekaligus melayani masyarakat dalam bidang teknologi informasi.</p>
+                    <p>Tim kami terdiri dari siswa-siswi pilihan dibawah bimbingan guru profesional yang berpengalaman di bidangnya. Kami selalu mengikuti perkembangan teknologi terkini untuk memberikan solusi terbaik bagi setiap klien.</p>
+                    <p>Visi kami adalah menjadi penyedia layanan teknologi komputer dan jaringan terdepan di Kabupaten Pekalongan dengan harga terjangkau dan kualitas terjamin.</p>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">200+</div>
+                            <div>Proyek Selesai</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div>Pelanggan Puas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5</div>
+                            <div>Tahun Pengalaman</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Layanan Kami</h2>
+                <p>Kami menyediakan berbagai layanan teknologi komputer dan jaringan untuk memenuhi kebutuhan Anda</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Perbaikan Komputer</h3>
+                        <p>Service komputer, laptop, dan instalasi software dengan teknisi berpengalaman dan bergaransi.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Jaringan Komputer</h3>
+                        <p>Pemasangan dan konfigurasi jaringan LAN, WAN, Wireless, dan troubleshooting jaringan.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Keamanan Jaringan</h3>
+                        <p>Pemasangan firewall, antivirus, dan sistem keamanan untuk melindungi data Anda.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Server & Hosting</h3>
+                        <p>Setup server, maintenance, dan layanan hosting website untuk kebutuhan bisnis Anda.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Rakit Komputer</h3>
+                        <p>Merakit komputer sesuai kebutuhan dengan komponen berkualitas dan harga terjangkau.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Pelatihan TKJ</h3>
+                        <p>Kursus dan pelatihan singkat mengenai jaringan komputer, programming, dan troubleshooting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section (replacing Gallery) -->
+    <section id="map" class="map-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lokasi Kami</h2>
+                <p>Kunjungi Unit Produksi TKJ SMK Ma'arif NU Tirto di alamat berikut</p>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.297438492389!2d109.67596531476938!3d-6.958649495016813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70225a5e5e5e5e%3A0x5e5e5e5e5e5e5e5e!2sSMK%20Ma&#39;arif%20NU%20Tirto!5e0!3m2!1sid!2sid!4v1635957891234!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="map-info">
+                <h3>Alamat Lengkap</h3>
+                <p>Jl. Wonoprojo No. 19, Mijen, Pacar, Kecamatan Tirto, Kabupaten Pekalongan, Jawa Tengah</p>
+                <a href="#contact" class="btn">Hubungi Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Daftar Harga</h2>
+                <p>Harga kompetitif untuk layanan berkualitas dari Unit Produksi TKJ SMK Ma'arif NU Tirto</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Perbaikan Komputer</h3>
+                        <div class="price">Rp 75K<span>/unit</span></div>
+                    </div>
+                    <div class="pricing-content">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Diagnosa masalah</li>
+                            <li><i class="fas fa-check"></i> Instalasi ulang OS</li>
+                            <li><i class="fas fa-check"></i> Cleaning hardware</li>
+                            <li><i class="fas fa-check"></i> Garansi 1 bulan</li>
+                        </ul>
+                        <a href="#contact" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Setup Jaringan</h3>
+                        <div class="price">Rp 250K<span>/titik</span></div>
+                    </div>
+                    <div class="pricing-content">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Pemasangan kabel</li>
+                            <li><i class="fas fa-check"></i> Konfigurasi router</li>
+                            <li><i class="fas fa-check"></i> Setup keamanan</li>
+                            <li><i class="fas fa-check"></i> Garansi 3 bulan</li>
+                        </ul>
+                        <a href="#contact" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Rakit Komputer</h3>
+                        <div class="price">Rp 150K<span>/unit</span></div>
+                    </div>
+                    <div class="pricing-content">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Konsultasi komponen</li>
+                            <li><i class="fas fa-check"></i> Perakitan komputer</li>
+                            <li><i class="fas fa-check"></i> Instalasi OS & driver</li>
+                            <li><i class="fas fa-check"></i> Garansi 1 tahun</li>
+                        </ul>
+                        <a href="#contact" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
+                <p>Silakan hubungi kami untuk konsultasi atau pemesanan layanan</p>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Nomor Telepon</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Layanan yang Dibutuhkan</label>
+                    <input type="text" id="service" name="service" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Kirim Pesan</button>
+            </form>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Alamat</h4>
+                        <p>Jl. Wonoprojo No. 19, Mijen, Pacar, Kecamatan Tirto, Kabupaten Pekalongan, Jawa Tengah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2023 Unit Produksi TKJ SMK Ma'arif NU Tirto. Hak Cipta Dilindungi.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would normally send the form data to a server
+            // For this example, we'll just show a success message
+            alert(`Terima kasih ${name}! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Sticky header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(46, 125, 50, 0.95)';
+            } else {
+                header.style.backgroundColor = 'var(--primary-color)';
+            }
+        });
+
+        // Simple animation for stats when in viewport
+        const stats = document.querySelectorAll('.stat-number');
+        let animated = false;
+
+        function animateStats() {
+            if (!animated) {
+                stats.forEach(stat => {
+                    const target = parseInt(stat.innerText);
+                    let count = 0;
+                    const increment = target / 50;
+                    
+                    const updateCount = () => {
+                        if (count < target) {
+                            count += increment;
+                            stat.innerText = Math.ceil(count) + (stat.innerText.includes('+') ? '+' : '');
+                            setTimeout(updateCount, 30);
+                        } else {
+                            stat.innerText = target + (stat.innerText.includes('+') ? '+' : '');
+                        }
+                    };
+                    
+                    updateCount();
+                });
+                animated = true;
+            }
+        }
+
+        // Check if stats section is in viewport
+        window.addEventListener('scroll', () => {
+            const profileSection = document.getElementById('profile');
+            const position = profileSection.getBoundingClientRect();
+            
+            if (position.top < window.innerHeight && position.bottom >= 0) {
+                animateStats();
+            }
+        });
+    </script>
+</body>
+</html>
